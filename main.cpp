@@ -2,6 +2,8 @@
 #include <iostream>
 #include <conio.h>
 #include <vector>
+#include "histogram.h"
+
 using namespace std;
 
 void svg_rect(double x, double y, double width, double height, string stroke = "blue", string fill = "#aaffaa") {
@@ -53,24 +55,24 @@ show_histogram_svg(const vector<size_t>& bins) {
 }
 
 
-void
-find_minmax(const vector<double>& numbers, double& min, double& max) //поиск минимального и макс чисел
-{
-    min = numbers[0];
-    max = numbers[0];
-    for (double number : numbers)
-    {
-        if (number < min)
-        {
-            min = number;
-        }
+//void
+//find_minmax(const vector<double>& numbers, double& min, double& max) //поиск минимального и макс чисел
+//{
+    //min = numbers[0];
+    //max = numbers[0];
+    //for (double number : numbers)
+    //{
+        //if (number < min)
+        //{
+            //min = number;
+        //}
 
-        if (number > max)
-        {
-            max = number;
-        }
-    }
-}
+        //if (number > max)
+        //{
+            //max = number;
+        //}
+    //}
+//}
 
 vector<size_t>
 make_histogram(const vector<double>& numbers, size_t bin_count) //создание гистограмы

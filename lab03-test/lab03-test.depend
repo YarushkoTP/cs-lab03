@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1654469904 source:c:\lab03-histogram\histogram.cpp
+	<vector>
+	"histogram.h"
+
+1654456410 c:\lab03-histogram\histogram.h
+	<vector>
+
+1654505330 source:c:\lab03-histogram\test.cpp
+	"histogram.h"
+	<cassert>
+
