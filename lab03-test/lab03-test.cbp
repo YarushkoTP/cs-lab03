@@ -31,6 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../histogram.cpp" />
+		<Unit filename="../histogram.h" />
+		<Unit filename="../svg.cpp" />
+		<Unit filename="../svg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../test.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
