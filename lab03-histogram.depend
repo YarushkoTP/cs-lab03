@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1656776192 source:c:\lab03-histogram\main.cpp
+1656776740 source:c:\lab03-histogram\main.cpp
 	<math.h>
 	<iostream>
 	<conio.h>
 	<vector>
 	"histogram.h"
 	"svg.h"
+	<curl/curl.h>
 
 1654532961 source:c:\lab03-histogram\svg.cpp
 	<math.h>
@@ -35,4 +36,48 @@
 	<math.h>
 	<iostream>
 	<conio.h>
+
+1652071940 c:\lab03-histogram\curl\include\curl\curl.h
+	"curlver.h"
+	"system.h"
+	<stdio.h>
+	<limits.h>
+	<osreldate.h>
+	<sys/types.h>
+	<time.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/select.h>
+	<sys/socket.h>
+	<sys/time.h>
+	"easy.h"
+	"multi.h"
+	"urlapi.h"
+	"options.h"
+	"header.h"
+	"typecheck-gcc.h"
+
+1652239120 c:\lab03-histogram\curl\include\curl\curlver.h
+
+1652071940 c:\lab03-histogram\curl\include\curl\system.h
+	<winsock2.h>
+	<windows.h>
+	<ws2tcpip.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<sys/poll.h>
+
+1652071940 c:\lab03-histogram\curl\include\curl\easy.h
+
+1652071940 c:\lab03-histogram\curl\include\curl\multi.h
+	"curl.h"
+
+1652071940 c:\lab03-histogram\curl\include\curl\urlapi.h
+	"curl.h"
+
+1652071940 c:\lab03-histogram\curl\include\curl\options.h
+
+1652076210 c:\lab03-histogram\curl\include\curl\header.h
+
+1652071940 c:\lab03-histogram\curl\include\curl\typecheck-gcc.h
 

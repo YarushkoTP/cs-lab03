@@ -4,6 +4,7 @@
 #include <vector>
 #include "histogram.h"
 #include "svg.h"
+#include <curl/curl.h>
 
 using namespace std;
 
@@ -102,6 +103,7 @@ show_histogram_text(vector<size_t> bins) //вывод гистограмы звездочками
 
 int main(istream& in, bool prompt, const vector<double>& numbers, size_t bin_count)
 {
+    curl_global_init(CURL_GLOBAL_ALL);
     //ввод данных
 
     const auto input = read_input(cin, true);
