@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1656774430 source:c:\lab03-histogram\main.cpp
+1656776192 source:c:\lab03-histogram\main.cpp
 	<math.h>
 	<iostream>
 	<conio.h>
@@ -14,7 +14,7 @@
 	<vector>
 	"svg.h"
 
-1654533371 c:\lab03-histogram\histogram.h
+1656776083 c:\lab03-histogram\histogram.h
 	<vector>
 
 1654468106 c:\lab03-histogram\histogram.cpp
@@ -23,7 +23,7 @@
 	<conio.h>
 	<vector>
 
-1656774448 source:c:\lab03-histogram\histogram.cpp
+1656776167 source:c:\lab03-histogram\histogram.cpp
 	<math.h>
 	<iostream>
 	<conio.h>
