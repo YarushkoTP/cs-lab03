@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <vector>
 #include "histogram.h"
+#include <windows.h>
 
 using namespace std;
 

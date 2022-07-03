@@ -1,9 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<svg width='400' height='300' viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg'>
+<svg width='600' height='300' viewBox='0 0 600 300' xmlns='http://www.w3.org/2000/svg'>
 <text x='22' y='30'>2</text>
  <rect x='10' y='50' width='30' height='20' stroke='red' fill='#aaffaa' />
 <text x='52' y='30'>5</text>
  <rect x='40' y='50' width='30' height='50' stroke='red' fill='#aaffaa' />
 <text x='82' y='30'>3</text>
  <rect x='70' y='50' width='30' height='30' stroke='red' fill='#aaffaa' />
+n = 602931718
+n = 23f00206
+ver = 518
+ver2 = 9200
+version_major = 6
+version_minor = 2
+build = 9200
+<text x='22' y='200'>Windows v 6.2 (build 9200)
+Computer name: DESKTOP-PIKEM11</text>
 </svg>
