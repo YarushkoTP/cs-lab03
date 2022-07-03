@@ -5,8 +5,37 @@
 #include "histogram.h"
 #include "svg.h"
 #include <curl/curl.h>
+#include <sstream>
+#include <string>
 
 using namespace std;
+
+void
+ver(int argc, char** argv, CURL* curl) {
+	bool verbose = false;
+
+	for (int i = 0; i < argc && !verbose; i++)
+	{
+		if (bool(strstr(argv[i], "-verbose"))) {
+			curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+			verbose = true;
+		}
+	}
+
+	bool oper = false;
+	if (!verbose) {
+		for (int i = 0; i < argc && !oper; i++)
+		{
+			if (bool(strstr(argv[i], "-"))) {
+				oper = true;
+
+				cerr << "U CAN!";
+			}
+		}
+	}
+
+};
+
 
 struct Input {
     vector<double> numbers;
@@ -101,19 +130,42 @@ show_histogram_text(vector<size_t> bins) //вывод гистограмы звездочками
     }
 }
 
-int main(istream& in, bool prompt, const vector<double>& numbers, size_t bin_count)
+size_t write_data(void* items, size_t item_size, size_t item_count, void* ctx) {
+    stringstream* buffer = reinterpret_cast<stringstream*>(ctx);
+    size_t data_size = item_size * item_count;
+    buffer->write((char*)items, data_size);
+    return data_size;
+}
+
+Input download(const string& address) {
+    stringstream buffer;
+    CURL *curl = curl_easy_init();
+        if(curl) {
+            CURLcode res;
+            curl_easy_setopt(curl, CURLOPT_URL, address.c_str());
+            curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
+            curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+            res = curl_easy_perform(curl);
+            if (res != CURLE_OK) {
+                cerr << curl_easy_strerror(res) << endl;
+                exit(1);
+            }
+            curl_easy_cleanup(curl);
+        }
+
+    return read_input(buffer, false);
+}
+
+int main(int argc, char* argv[])
 {
-    curl_global_init(CURL_GLOBAL_ALL);
-    //ввод данных
-
-    const auto input = read_input(cin, true);
-
-    //расчет данных
+    Input input;
+    if (argc > 1) {
+        input = download(argv[1]);
+    } else {
+        input = read_input(cin, true);
+    }
 
     const auto bins = make_histogram(input);
-
-    //вывод гистрограмы
-
     show_histogram_svg(bins);
 
     return 0;
