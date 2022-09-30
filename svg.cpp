@@ -75,7 +75,7 @@ make_info_text() {
 void
 show_histogram_svg(const vector<size_t>& bins) {
     const auto IMAGE_WIDTH = 500;
-    const auto IMAGE_HEIGHT = 300;
+    const auto IMAGE_HEIGHT = 900;
     const auto TEXT_LEFT = 22;
     const auto TEXT_BASELINE = 30;
     const auto TEXT_WIDTH = 50;
@@ -106,6 +106,6 @@ show_histogram_svg(const vector<size_t>& bins) {
         svg_rect(top + BLOCK_WIDTH, TEXT_WIDTH, BIN_HEIGHT, bin_width, "red", "#aaffaa");
         top += BIN_HEIGHT;
     }
-    svg_text(TEXT_LEFT,200, make_info_text());
+    svg_text(TEXT_LEFT,900, make_info_text());
     svg_end();
 }

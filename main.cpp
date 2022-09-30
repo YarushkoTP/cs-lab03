@@ -11,6 +11,11 @@
 
 using namespace std;
 
+struct Input {
+    vector<double> numbers;
+    size_t bin_count;
+};
+
 void
 ver(int argc, char** argv, CURL* curl) {
 	bool verbose = false;
@@ -35,12 +40,6 @@ ver(int argc, char** argv, CURL* curl) {
 		}
 	}
 
-};
-
-
-struct Input {
-    vector<double> numbers;
-    size_t bin_count;
 };
 
 vector<double> input_numbers(istream& in, size_t cnt) {
@@ -138,7 +137,8 @@ size_t write_data(void* items, size_t item_size, size_t item_count, void* ctx) {
     return data_size;
 }
 
-Input download(const string& address) {
+Input download(const string& address, bool flag) {
+    long L=0;
     stringstream buffer;
     CURL *curl = curl_easy_init();
         if(curl) {
@@ -146,6 +146,8 @@ Input download(const string& address) {
             curl_easy_setopt(curl, CURLOPT_URL, address.c_str());
             curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
             curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+            if (flag)
+                curl_easy_setopt(curl, CURLOPT_VERBOSE, L);
             res = curl_easy_perform(curl);
             if (res != CURLE_OK) {
                 cerr << curl_easy_strerror(res) << endl;
@@ -159,15 +161,36 @@ Input download(const string& address) {
 
 int main(int argc, char* argv[])
 {
+    //¬вод исходных данных
     Input input;
+
     if (argc > 1) {
-        input = download(argv[1]);
-    } else {
-        input = read_input(cin, true);
+        bool flag = false;
+        for (int i = 0; i < argc; i++)
+        {
+            if (!strcmp(argv[i], "-verbose")) //сравнение строк
+                flag = true;
+            else
+                if (!strncmp(argv[i], "-", 1)) //сравнение первого символа
+                {
+                    cerr << "-verbose in work" << endl;
+                    return 0;
+                }
+            if (flag)
+            {
+                if (!strcmp(argv[1], "-verbose"))
+                    input = download(argv[2], flag);
+                else
+                    input = download(argv[1], flag);
+            }
+            else
+                input = download(argv[1], flag);
+        }
     }
+        else
+            input = read_input(cin, true);
 
-    const auto bins = make_histogram(input);
-    show_histogram_svg(bins);
-
+    const auto bins = make_histogram(input); //обработка данных
+    show_histogram_svg(bins); //вывод
     return 0;
-}
+    }
